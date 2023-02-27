@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <h4><%= user %></h4>
+    <h1>Table</h1>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#userID </th>
+            <th scope="col"> First Name </th>
+            <th scope="col"> E-Mail </th>
+            <th scope="col"> Telephone </th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var u of user) { %> 
+          <tr>
+            <th scope="row"><%= u.userID %></th>
+            <td><%= u.firstname %></td>
+            <td><%= u.email %></td>
+            <td><%= u.telephone %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
