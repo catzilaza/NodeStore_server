@@ -18,6 +18,8 @@ function connectDb(database) {
   }
 }
 module.exports = connectDb;
+
+
 // module.exports.connectDb = connectDb;
 
 // function closeDb() {
@@ -30,3 +32,16 @@ module.exports = connectDb;
 // }
 
 // module.exports.closeDb = closeDb;
+
+// const connectDb = async()=> {
+//   try {
+//     await mongoose.connect(process.env.DATABASE);
+//     console.log("DataBase connect...")
+//   }
+//   catch(err) {
+//     console.log(err);
+//     process.exit(1);
+//   }
+// }
+// module.exports = connectDb;
+

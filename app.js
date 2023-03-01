@@ -11,7 +11,8 @@ var productRouter = require('./routes/product');
 var authenRouter = require('./routes/authen');
 var registerRouter = require('./routes/register');
 
-const dotenv = require('dotenv')
+//const { readFileSync} = require('fs');
+const dotenv = require('dotenv');
 dotenv.config();
 
 var app = express();

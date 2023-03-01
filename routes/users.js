@@ -1,6 +1,9 @@
 var express = require("express");
 var router = express.Router();
 
+const {Auth} = require("../middleware/Auth");
+//const {AuthenUser} = require("../controllers/authen");
+
 const {
   userGetAll,
   userGetOne,
@@ -8,6 +11,8 @@ const {
   userUpateOne,
   userDeleteOne,
   userDeleteAll,
+  userLogin,
+  userAuthen
 } = require("../controllers/userController");
 
 /* GET user one. */
@@ -17,7 +22,7 @@ router.get("/:id", userGetOne);
 router.get("/", userGetAll);
 
 /* Create user one. */
-router.post("/", userCreate);
+router.post("/register", userCreate);
 
 /* Update user one. */
 router.put('/', userUpateOne);
@@ -27,5 +32,12 @@ router.delete('/:id', userDeleteOne);
 
 /* Delete user all. */
 router.delete("/", userDeleteAll);
+
+/* Login user. */
+router.post("/login", userLogin);
+
+/* Authentication user. */
+router.post("/authen",Auth, userAuthen);
+
 
 module.exports = router;

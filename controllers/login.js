@@ -17,7 +17,7 @@ const userlogin = async function (req, res, next) {
     existingUser = await User.findOne(query);
     if (existingUser === null) {
       console.log("Not Found USER's Email:", existingUser);
-      res.json({status: "failed", message: "Not Found USER Email"});
+      res.json({status: "error", message: "Not Found USER Email"});
       return;
     }
     console.log("existingUser : ", existingUser);
