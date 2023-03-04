@@ -28,8 +28,9 @@ const userGetAll = async function (req, res, next) {
     res.status(200).json({
       status: "OK userGetAll ",
       message: "userGetAll OK ",
-      user: user,
+      user: user
     });
+    
   } catch (error) {
     res.status(500).json({ status: "error", message: error });
   }
@@ -154,7 +155,7 @@ const userLogin = async function (req, res, next) {
     existingUser = await User.findOneAndUpdate(query, {new:true});
     if (existingUser === null) {
       console.log("Not Found Email:", existingUser);
-      res.json({ status: "error", message: "Not Found Email" });
+      res.json({ status: "error", message: "Not Found Email" ,email: existingUser});
       return;
     }
     console.log("existingUser : ", existingUser);
@@ -166,13 +167,15 @@ const userLogin = async function (req, res, next) {
         if (err) {
           console.log("bcrypt.compare error : ", err);
           //res.status(400).json({status: 'error', message: `bcrypt.compare error : ${err}`});
-          res.json({ status: "error", message: "bcrypt.compare error" });
+          res.json({ status: "error", message: "bcrypt.compare error",
+                     email: existingUser.email, username: existingUser.username});
           return;
         }
         if (!result) {
           console.log("Result compare password : ", result);
           //res.status(400).json({status: 'error', message: `Result compare password : ${result}`});
-          res.json({ status: "error", message: "Result compare password error" });
+          res.json({ status: "error", message: "Result compare password error",
+                     email: existingUser.email, username: existingUser.username });
           return;
         }
 
@@ -195,6 +198,9 @@ const userLogin = async function (req, res, next) {
           status: "ok", //"Creating token and it expire on : "
           message: `Expire on : ${Date.now() + 1000 * 60 * 60}`,
           username: existingUser.username,
+          email: existingUser.email,
+          userID: existingUser.userID,
+          isAdmin: existingUser.isAdmin,
           token: token,
         });
       }
@@ -211,7 +217,9 @@ module.exports.userLogin = userLogin;
 
 const userAuthen = async function (req, res, next) {
   try {
-    console.log("userAuthen req.body : ", req.body);
+    console.log("userAuthen req.user : ", req.user);
+    //const user =await User.findOne({username: req.user.username}).select('-password').exec();
+    //res.status(200).json({ status: "ok", message: "UserAuthen Success", username: user.username, isAdmin: user.isAdmin   });
     res.status(200).json({ status: "ok", message: "UserAuthen Success" });
   } catch (error) {
     res.status(500).json({ status: "error", message: "UserAuthen Error" });

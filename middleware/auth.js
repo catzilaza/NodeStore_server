@@ -12,7 +12,7 @@ const Auth = (req, res, next) => {
     const decoded = jwt.verify(token, "shhhhhhared-secret");
     console.log("Auth middleware decoded : ", decoded);
 
-    req.body = decoded;
+    req.user = decoded;
 
     next();
 

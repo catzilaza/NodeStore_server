@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var userRouter = require('./routes/user');
 var productRouter = require('./routes/product');
 var authenRouter = require('./routes/authen');
 var registerRouter = require('./routes/register');
@@ -29,11 +29,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', userRouter);
 app.use('/product', productRouter);
 app.use('/authen', authenRouter);
 app.use('/register', registerRouter);
-app.use('/user', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
