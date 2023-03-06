@@ -31,6 +31,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const database = "storesonline";
+const database1 = "storeDessert";
+connectDb(database1);
+
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/product', productRouter);
@@ -59,8 +63,6 @@ app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
-const database = "storesonline";
-const database1 = "storeDessert";
-connectDb(database1);
+
 
 module.exports = app;

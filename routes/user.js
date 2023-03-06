@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-const {Auth} = require("../middleware/Auth");
+//const {Auth} = require("../middleware/Auth");
 //const {AuthenUser} = require("../controllers/authen");
 
 const {
@@ -37,7 +37,8 @@ router.delete("/", userDeleteAll);
 router.post("/login", userLogin);
 
 /* Authentication user. */
-router.post("/authen",Auth, userAuthen);
+//router.post("/authen",Auth, userAuthen);
+router.post("/authen", userAuthen);
 
 
 module.exports = router;
