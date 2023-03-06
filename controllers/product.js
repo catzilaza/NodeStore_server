@@ -8,13 +8,13 @@ const Product = require("../model/product");
 
 const getAllProduct = async function (req, res, next) {
   try {
-    //connectDb(database);
+    
     const product = await Product.find({});
     //res.status(200).render("product", { title: "Product Page", items: product });
-    res.json({ status: "ok", message: "product listing", data: product });
+    res.status(200).json({ status: "ok", message: "product listing", data: product });
   } catch (error) {
     console.log("GET Product ERROR : ", error);
-    res.json({ status: "error", message: error });
+    res.status(500).json({ status: "error", message: error });
   }
   //res.send('respond with a resource');
 };
