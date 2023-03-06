@@ -2,11 +2,12 @@ var express = require("express");
 var router = express.Router();
 const mongoose = require("mongoose");
 //const database = "storesonline";
-
+//`mongodb://127.0.0.1:27017/${database}`
+//process.env.URL_LOCALHOST
 function connectDb(database) {
   try {
     mongoose.set("strictQuery", true);
-    mongoose.connect(`mongodb://127.0.0.1:27017/${database}`, {
+    mongoose.connect(process.env.URL_LOCALHOST+database, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       //useCreateIndex: true,

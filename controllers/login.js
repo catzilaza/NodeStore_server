@@ -1,5 +1,5 @@
-const connectDb = require("../DataBase/connectDB");
-const database = "storesonline";
+//const connectDb = require("../DataBase/connectDB");
+//const database = "storesonline";
 const User = require("../model/user");
 
 const bcrypt = require("bcrypt");
@@ -8,7 +8,7 @@ const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 
 const userlogin = async function (req, res, next) {
-  connectDb(database);
+  //connectDb(database);
   const query = { email: req.body.email };
   console.log("Query : ", query);
 

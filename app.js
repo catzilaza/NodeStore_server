@@ -11,6 +11,8 @@ var productRouter = require('./routes/product');
 var authenRouter = require('./routes/authen');
 var registerRouter = require('./routes/register');
 
+const connectDb = require('./DataBase/connectDB');
+
 //const { readFileSync} = require('fs');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -55,5 +57,7 @@ const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+const database = "storesonline";
+connectDb(database);
 
 module.exports = app;

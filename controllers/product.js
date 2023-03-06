@@ -1,5 +1,5 @@
-const connectDb = require("../DataBase/connectDB");
-const database = "storesonline";
+//const connectDb = require("../DataBase/connectDB");
+//const database = "storesonline";
 
 var fs = require("fs");
 var path = require("path");
@@ -8,7 +8,7 @@ const Product = require("../model/product");
 
 const getAllProduct = async function (req, res, next) {
   try {
-    connectDb(database);
+    //connectDb(database);
     const product = await Product.find({});
     //res.status(200).render("product", { title: "Product Page", items: product });
     res.json({ status: "ok", message: "product listing", data: product });
@@ -21,7 +21,7 @@ const getAllProduct = async function (req, res, next) {
 module.exports.getAllProduct = getAllProduct;
 
 const insertProduct = async (req, res, next) => {
-  connectDb(database);
+  //connectDb(database);
   console.log(`insertProduct :
     productID: ${req.body.productID},
     name: ${req.body.name},
@@ -65,7 +65,7 @@ const insertProduct = async (req, res, next) => {
 module.exports.insertProduct = insertProduct;
 
 const deleteProduct = async function (req, res, next) {
-  connectDb(database);
+  //connectDb(database);
 
   console.log(
     "req.params.id : deleteProduct = async (req, res, next) => : ",
@@ -85,7 +85,7 @@ module.exports.deleteProduct = deleteProduct;
 
 const updateProduct = async function (req, res, next) {
 
-  connectDb(database);
+  //connectDb(database);
   //  JSON.stringify(req.body)
   console.log("updateProduct JSON.stringify(req.body) : ", JSON.stringify(req.body));
   console.log(`updateProduct :
