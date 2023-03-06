@@ -6,10 +6,10 @@ const mongoose = require("mongoose");
 //process.env.URL_LOCALHOST
 //process.env.URL_CLOUD_ATLAST
 
-function connectDb(database) {
+function connectDb() {
   try {
     mongoose.set("strictQuery", true);
-    mongoose.connect(process.env.URL_CLOUD_ATLAST+database, {
+    mongoose.connect('mongodb://127.0.0.1:27017/storesonline', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       //useCreateIndex: true,

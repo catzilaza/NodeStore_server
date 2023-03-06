@@ -9,8 +9,7 @@ const Product = require("../model/product");
 const getAllProduct = async function (req, res, next) {
   try {
     
-    const product = await Product.find({});
-    //res.status(200).render("product", { title: "Product Page", items: product });
+    const product = await Product.find({});        
     res.status(200).json({ status: "ok", message: "product listing", data: product });
   } catch (error) {
     console.log("GET Product ERROR : ", error);

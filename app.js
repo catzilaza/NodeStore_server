@@ -20,6 +20,8 @@ dotenv.config();
 
 var app = express();
 app.use(cors());
+
+connectDb();
 // app.use(cors({
 //   credentials: true,
 //   origin: ['http://localhost:3001']
@@ -34,10 +36,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-const database = "storesonline";
-const database1 = "storeDessert";
-connectDb(database1);
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
