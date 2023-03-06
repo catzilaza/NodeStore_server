@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 //const database = "storesonline";
 //`mongodb://127.0.0.1:27017/${database}`
 //process.env.URL_LOCALHOST
+//process.env.URL_CLOUD_ATLAST
+
 function connectDb(database) {
   try {
     mongoose.set("strictQuery", true);
