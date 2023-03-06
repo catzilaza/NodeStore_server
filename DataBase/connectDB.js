@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 function connectDb(database) {
   try {
     mongoose.set("strictQuery", true);
-    mongoose.connect(process.env.URL_LOCALHOST+database, {
+    mongoose.connect(process.env.URL_CLOUD_ATLAST+database, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       //useCreateIndex: true,
