@@ -12,6 +12,7 @@ var authenRouter = require('./routes/authen');
 var registerRouter = require('./routes/register');
 
 const connectDb = require('./DataBase/connectDB');
+const port = process.env.PORT || 3000;
 
 //const { readFileSync} = require('fs');
 const dotenv = require('dotenv');
@@ -53,7 +54,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const port = process.env.PORT;
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
