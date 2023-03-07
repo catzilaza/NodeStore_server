@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const mongoose = require("mongoose");
-//const database = "storesonline";
+const database = "storesonline";
 //`mongodb://127.0.0.1:27017/${database}`
 //process.env.URL_LOCALHOST
 //process.env.URL_CLOUD_ATLAST
@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
 function connectDb() {
   try {
     mongoose.set("strictQuery", true);
-    mongoose.connect(process.env.URL_CLOUD_ATLAST+'storesDessert', {
+    mongoose.connect(process.env.URL_CLOUD_ATLAST, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       //useCreateIndex: true,
