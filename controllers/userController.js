@@ -1,6 +1,4 @@
-//const {connectDb, closeDb} = require("../DataBase/connectDB");
-//const connectDb = require("../DataBase/connectDB");
-//const database = "storesonline";
+
 const User = require("../model/user");
 
 const bcrypt = require("bcrypt");
@@ -23,7 +21,7 @@ module.exports.userGetOne = userGetOne;
 
 const userGetAll = async function (req, res, next) {
   try {
-    //connectDb(database);
+    
     const user = await User.find({});
     res.status(200).json({
       status: "OK userGetAll ",
@@ -39,7 +37,7 @@ module.exports.userGetAll = userGetAll;
 
 const userCreate = async function (req, res, next) {
   try {
-    //connectDb(database);
+    
     //Check User
     const username = req.body.username;
     const user = await User.findOne({ username: username });
@@ -95,7 +93,7 @@ module.exports.userCreate = userCreate;
 const userUpateOne = async function (req, res, next) {
   console.log("userUpateOne : req.body : ", req.body);
   try {
-    //connectDb(database);
+    
     const userID = req.body.userID;
     const firstname = req.body.firstname;
     const user = await User.updateOne(
@@ -106,7 +104,7 @@ const userUpateOne = async function (req, res, next) {
     if (!user) {
       res.status(500).json({ status: "error", message: "userUpateOne error" });
     }
-    //closeDb();
+    
     res.status(200).json({ status: "OK", message: "userUpateOne success" });
   } catch (error) {
     res.status(500).json({ status: "error", message: error });
@@ -117,7 +115,7 @@ module.exports.userUpateOne = userUpateOne;
 
 const userDeleteOne = async function (req, res, next) {
   try {
-    //connectDb(database);
+    
     const id = req.params["id"];
     console.log("userDeleteOne id : ", req.params["id"]);
     const user = await User.deleteOne({ userID: req.params.id });
@@ -131,8 +129,7 @@ const userDeleteOne = async function (req, res, next) {
 module.exports.userDeleteOne = userDeleteOne;
 
 const userDeleteAll = async function (req, res, next) {
-  try {
-    //connectDb(database);
+  try {    
 
     const user = await User.deleteMany({});
 
@@ -149,7 +146,7 @@ const userLogin = async function (req, res, next) {
   console.log("Query userLogin password: ", req.body.password);
   let existingUser;
   try {
-    //connectDb(database);    
+      
     const query = { email: req.body.email };
     console.log("Query : ", query);
     existingUser = await User.findOneAndUpdate(query, {new:true});

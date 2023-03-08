@@ -1,6 +1,7 @@
 //const connectDb = require("../DataBase/connectDB");
 //const database = "storesonline";
 
+const { render } = require("ejs");
 var fs = require("fs");
 var path = require("path");
 
@@ -9,13 +10,17 @@ const Product = require("../model/product");
 const getAllProduct = async function (req, res, next) {
   try {
     
-    const product = await Product.find({});        
-    res.status(200).json({ status: "ok", message: "product listing", data: product });
+    const product = await Product.find({});
+    render('product',{items:product});
+    // res.status(200).json({
+    //   status: "OK getAllProduct ",
+    //   message: "getAllProduct OK ",
+    //   data: product
+    // });
+    
   } catch (error) {
-    console.log("GET Product ERROR : ", error);
     res.status(500).json({ status: "error", message: error });
   }
-  //res.send('respond with a resource');
 };
 module.exports.getAllProduct = getAllProduct;
 
